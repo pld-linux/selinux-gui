@@ -1,15 +1,15 @@
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	2.7
+Version:	2.9
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
-Source0:	https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/%{name}-%{version}.tar.gz
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
 # Source0-md5:	f3555cb50a9e67b42bc917ede1982c7d
 URL:		https://github.com/SELinuxProject/selinux/wiki
-BuildRequires:	python-modules >= 1:2.7
+BuildRequires:	python3-modules >= 1:2.7
 BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,16 +47,16 @@ konfiguracją SELinuksa.
 Summary:	Graphical SELinux Management tool
 Summary(pl.UTF-8):	Graficzne narzędzie do zarządzania SELinuksem
 Group:		X11/Applications
-Requires:	policycoreutils >= 2.7
-Requires:	python-gnome >= 2
-Requires:	python-pygobject >= 2
-Requires:	python-pygtk-glade >= 2:2
-Requires:	python-pygtk-gtk >= 2:2
-Requires:	python-selinux
-Requires:	python-sepolicy >= 2.7
+Requires:	policycoreutils >= 2.9
+Requires:	python3-gnome >= 2
+Requires:	python3-pygobject >= 2
+Requires:	python3-pygtk-glade >= 2:2
+Requires:	python3-pygtk-gtk >= 2:2
+Requires:	python3-selinux
+Requires:	python3-sepolicy >= 2.9
 Requires:	polkit
 # semanage and sepolicy commands
-Requires:	selinux-python >= 2.7
+Requires:	selinux-python >= 2.9
 
 %description -n system-config-selinux
 system-config-selinux provides a graphical interface for managing the
