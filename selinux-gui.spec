@@ -7,7 +7,7 @@ License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
-# Source0-md5:	f3555cb50a9e67b42bc917ede1982c7d
+# Source0-md5:	1bfe5eeb861f8563a7b397ab8530ab52
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:2.7
 BuildRequires:	rpm-pythonprov
@@ -47,14 +47,12 @@ konfiguracją SELinuksa.
 Summary:	Graphical SELinux Management tool
 Summary(pl.UTF-8):	Graficzne narzędzie do zarządzania SELinuksem
 Group:		X11/Applications
+Requires:	gtk+3 >= 3
 Requires:	policycoreutils >= 2.9
-Requires:	python3-gnome >= 2
-Requires:	python3-pygobject >= 2
-Requires:	python3-pygtk-glade >= 2:2
-Requires:	python3-pygtk-gtk >= 2:2
+Requires:	polkit
+Requires:	python3-pygobject3 >= 3
 Requires:	python3-selinux
 Requires:	python3-sepolicy >= 2.9
-Requires:	polkit
 # semanage and sepolicy commands
 Requires:	selinux-python >= 2.9
 
@@ -75,9 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%py_comp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
-%py_ocomp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -87,16 +82,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/system-config-selinux/polgengui.py
 %attr(755,root,root) %{_datadir}/system-config-selinux/system-config-selinux.py
 %{_datadir}/system-config-selinux/[!ps]*.py
+%{_datadir}/system-config-selinux/polgen.ui
 %{_datadir}/system-config-selinux/portsPage.py
 %{_datadir}/system-config-selinux/semanagePage.py
 %{_datadir}/system-config-selinux/statusPage.py
-%{_datadir}/system-config-selinux/*.py[co]
-%{_datadir}/system-config-selinux/polgen.glade
 %{_datadir}/system-config-selinux/selinux-polgengui.desktop
 %{_datadir}/system-config-selinux/sepolicy.desktop
 %{_datadir}/system-config-selinux/system-config-selinux.desktop
-%{_datadir}/system-config-selinux/system-config-selinux.glade
 %{_datadir}/system-config-selinux/system-config-selinux.png
+%{_datadir}/system-config-selinux/system-config-selinux.ui
 %{_datadir}/polkit-1/actions/org.selinux.config.policy
 %{_iconsdir}/hicolor/*x*/apps/sepolicy.png
 %{_iconsdir}/hicolor/24x24/apps/system-config-selinux.png
@@ -104,3 +98,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/system-config-selinux.png
 %{_mandir}/man8/selinux-polgengui.8*
 %{_mandir}/man8/system-config-selinux.8*
+%lang(ru) %{_mandir}/ru/man8/selinux-polgengui.8*
+%lang(ru) %{_mandir}/ru/man8/system-config-selinux.8*
