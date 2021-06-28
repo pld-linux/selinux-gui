@@ -9,8 +9,9 @@ Group:		Applications/System
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
 # Source0-md5:	1bfe5eeb861f8563a7b397ab8530ab52
 URL:		https://github.com/SELinuxProject/selinux/wiki
-BuildRequires:	python3-modules >= 1:2.7
+BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.507
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,9 +52,9 @@ Requires:	gtk+3 >= 3
 Requires:	policycoreutils >= 2.9
 Requires:	polkit
 Requires:	python3-pygobject3 >= 3
-Requires:	python3-selinux
+Requires:	python3-selinux >= 2.9
 Requires:	python3-sepolicy >= 2.9
-# semanage and sepolicy commands
+# semanage and sepolicy commands, seobject.py sepolicy.py
 Requires:	selinux-python >= 2.9
 
 %description -n system-config-selinux
@@ -73,6 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py3_comp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
+%py3_ocomp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -91,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/system-config-selinux/system-config-selinux.desktop
 %{_datadir}/system-config-selinux/system-config-selinux.png
 %{_datadir}/system-config-selinux/system-config-selinux.ui
+%{_datadir}/system-config-selinux/__pycache__
 %{_datadir}/polkit-1/actions/org.selinux.config.policy
 %{_iconsdir}/hicolor/*x*/apps/sepolicy.png
 %{_iconsdir}/hicolor/24x24/apps/system-config-selinux.png
