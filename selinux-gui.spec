@@ -1,13 +1,13 @@
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	2.9
+Version:	3.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
-Source0:	https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
-# Source0-md5:	1bfe5eeb861f8563a7b397ab8530ab52
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
+# Source0-md5:	1e0ea65dfb2b5408969bbe55f6f9d04e
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
@@ -49,13 +49,14 @@ Summary:	Graphical SELinux Management tool
 Summary(pl.UTF-8):	Graficzne narzędzie do zarządzania SELinuksem
 Group:		X11/Applications
 Requires:	gtk+3 >= 3
-Requires:	policycoreutils >= 2.9
+Requires:	policycoreutils >= 3.1
 Requires:	polkit
 Requires:	python3-pygobject3 >= 3
-Requires:	python3-selinux >= 2.9
-Requires:	python3-sepolicy >= 2.9
-# semanage and sepolicy commands, seobject.py sepolicy.py
-Requires:	selinux-python >= 2.9
+Requires:	python3-selinux >= 3.1
+# seobject, sepolicy python modules
+Requires:	python3-sepolicy >= 3.1
+# semanage and sepolicy commands
+Requires:	selinux-python >= 3.1
 
 %description -n system-config-selinux
 system-config-selinux provides a graphical interface for managing the
@@ -82,21 +83,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n system-config-selinux
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/selinux-polgengui
 %attr(755,root,root) %{_bindir}/system-config-selinux
-%attr(755,root,root) %{_datadir}/system-config-selinux/polgengui.py
 %attr(755,root,root) %{_datadir}/system-config-selinux/system-config-selinux.py
 %{_datadir}/system-config-selinux/[!ps]*.py
 %{_datadir}/system-config-selinux/polgen.ui
 %{_datadir}/system-config-selinux/portsPage.py
 %{_datadir}/system-config-selinux/semanagePage.py
 %{_datadir}/system-config-selinux/statusPage.py
-%{_datadir}/system-config-selinux/selinux-polgengui.desktop
-%{_datadir}/system-config-selinux/sepolicy.desktop
-%{_datadir}/system-config-selinux/system-config-selinux.desktop
 %{_datadir}/system-config-selinux/system-config-selinux.png
 %{_datadir}/system-config-selinux/system-config-selinux.ui
 %{_datadir}/system-config-selinux/__pycache__
 %{_datadir}/polkit-1/actions/org.selinux.config.policy
+%{_desktopdir}/selinux-polgengui.desktop
+%{_desktopdir}/sepolicy.desktop
+%{_desktopdir}/system-config-selinux.desktop
 %{_iconsdir}/hicolor/*x*/apps/sepolicy.png
 %{_iconsdir}/hicolor/24x24/apps/system-config-selinux.png
 %{_pixmapsdir}/sepolicy.png
