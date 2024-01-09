@@ -1,13 +1,13 @@
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	3.1
-Release:	2
+Version:	3.6
+Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
-Source0:	https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
-# Source0-md5:	1e0ea65dfb2b5408969bbe55f6f9d04e
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	bb1e94c82d1180cffd7e7079fd587a23
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
@@ -50,14 +50,14 @@ Summary:	Graphical SELinux Management tool
 Summary(pl.UTF-8):	Graficzne narzędzie do zarządzania SELinuksem
 Group:		X11/Applications
 Requires:	gtk+3 >= 3
-Requires:	policycoreutils >= 3.1
+Requires:	policycoreutils >= 3.6
 Requires:	polkit
 Requires:	python3-pygobject3 >= 3
-Requires:	python3-selinux >= 3.1
+Requires:	python3-selinux >= 3.6
 # seobject, sepolicy python modules
-Requires:	python3-sepolicy >= 3.1
+Requires:	python3-sepolicy >= 3.6
 # semanage and sepolicy commands
-Requires:	selinux-python >= 3.1
+Requires:	selinux-python >= 3.6
 
 %description -n system-config-selinux
 system-config-selinux provides a graphical interface for managing the
@@ -105,5 +105,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/system-config-selinux.png
 %{_mandir}/man8/selinux-polgengui.8*
 %{_mandir}/man8/system-config-selinux.8*
-%lang(ru) %{_mandir}/ru/man8/selinux-polgengui.8*
-%lang(ru) %{_mandir}/ru/man8/system-config-selinux.8*
