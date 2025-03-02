@@ -1,13 +1,14 @@
+%define	selinux_ver	3.8
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	3.7
+Version:	3.8
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c2afbee81d2b3f76ec7cbb8ce9321c60
+# Source0-md5:	5252e3fc96392fa179728cc80bd81deb
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
@@ -50,14 +51,14 @@ Summary:	Graphical SELinux Management tool
 Summary(pl.UTF-8):	Graficzne narzędzie do zarządzania SELinuksem
 Group:		X11/Applications
 Requires:	gtk+3 >= 3
-Requires:	policycoreutils >= 3.7
+Requires:	policycoreutils >= %{selinux_ver}
 Requires:	polkit
 Requires:	python3-pygobject3 >= 3
-Requires:	python3-selinux >= 3.7
+Requires:	python3-selinux >= %{selinux_ver}
 # seobject, sepolicy python modules
-Requires:	python3-sepolicy >= 3.7
+Requires:	python3-sepolicy >= %{selinux_ver}
 # semanage and sepolicy commands
-Requires:	selinux-python >= 3.7
+Requires:	selinux-python >= %{selinux_ver}
 
 %description -n system-config-selinux
 system-config-selinux provides a graphical interface for managing the
