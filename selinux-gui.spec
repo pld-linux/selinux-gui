@@ -2,13 +2,13 @@
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	3.8
+Version:	3.8.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	5252e3fc96392fa179728cc80bd81deb
+# Source0-md5:	16af5f4b3b8053ac610a7b2a7bd7fc77
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
@@ -80,10 +80,12 @@ rm -rf $RPM_BUILD_ROOT
 %py3_comp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
 %py3_ocomp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -n system-config-selinux
+%files -n system-config-selinux -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/selinux-polgengui
 %attr(755,root,root) %{_bindir}/system-config-selinux
