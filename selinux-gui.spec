@@ -3,7 +3,7 @@ Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
 Version:	3.8.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_comp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
 %py3_ocomp $RPM_BUILD_ROOT%{_datadir}/system-config-selinux
+
+# not supported by glibc (as of 2.41)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ilo
 
 %find_lang %{name}
 
