@@ -1,14 +1,14 @@
-%define	selinux_ver	3.10
+%define	selinux_ver	3.11
 Summary:	SELinux policy core utilities
 Summary(pl.UTF-8):	Podstawowe narzędzia dla polityki SELinux
 Name:		selinux-gui
-Version:	3.10
+Version:	3.11
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 #Source0Download: https://github.com/SELinuxProject/selinux/wiki/Releases
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	47b087ee0047a005d19c32e3f09c3f7b
+# Source0-md5:	105072d7e29e132735946f544825ed9f
 URL:		https://github.com/SELinuxProject/selinux/wiki
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
